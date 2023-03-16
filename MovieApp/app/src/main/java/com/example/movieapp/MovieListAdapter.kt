@@ -23,10 +23,8 @@ class MovieListAdapter(
         val genreMatch: String = movies[position].genre
         //Pronalazimo id drawable elementa na osnovu naziva zanra
         val context: Context = holder.movieImage.context
-        var id: Int = context.resources
-            .getIdentifier(genreMatch, "drawable", context.packageName)
-        if (id==0) id=context.resources
-            .getIdentifier("picture1", "drawable", context.packageName)
+        var id: Int = context.resources.getIdentifier(genreMatch, "drawable", context.packageName)
+        if (id==0) id=context.resources.getIdentifier("comedy", "drawable", context.packageName)
         holder.movieImage.setImageResource(id)
     }
     fun updateMovies(movies: List<Movie>) {
