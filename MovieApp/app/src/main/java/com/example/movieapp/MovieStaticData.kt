@@ -22,11 +22,11 @@ fun getFavoriteMovies(): List<Movie> {
 }
 fun getRecentMovies(): List<Movie> {
     return listOf(
-        Movie(1,"Avengers: Endgame",
+        Movie(1,"Avatar",
             "Sparks fly when spirited Elizabeth Bennet meets single, rich, and proud Mr. Darcy. But Mr. Darcy reluctantly finds himself falling in love with a woman beneath his class. Can each overcome their own pride and prejudice?",
             "16.02.2021.","https://www.imdb.com/title/tt0414387/",
             "comedy"),
-        Movie(2,"Star Wars: The Last Jedi",
+        Movie(2,"Avatar 2: The Way of The Water",
             "Sparks fly when spirited Elizabeth Bennet meets single, rich, and proud Mr. Darcy. But Mr. Darcy reluctantly finds himself falling in love with a woman beneath his class. Can each overcome their own pride and prejudice?",
             "16.02.2021.","https://www.imdb.com/title/tt0414387/",
             "horror"),

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Filmska Aplikacija</string>
+    <string name="app_name">Cineaste</string>
     <string name="search">Pretraži</string>
     <string name="favorite">Omiljeni filmovi</string>
     <string name="recent">Najnoviji filmovi</string>
