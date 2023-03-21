@@ -6,8 +6,12 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MovieDetailActivity : AppCompatActivity() {
     private lateinit var movie: Movie
@@ -37,6 +41,24 @@ class MovieDetailActivity : AppCompatActivity() {
             showWebsite()
         }
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        title.setOnClickListener {
+            showWebsiteOnTitleClick()
+        }
+
+        val shareButton = findViewById<FloatingActionButton>(R.id.shareButton)
+
+        // Set a click listener for the share button
+        shareButton.setOnClickListener {
+            // Create a share intent
+            val shareIntent = Intent(Intent.ACTION_SEND)
+            shareIntent.type = "text/plain"
+            shareIntent.putExtra(Intent.EXTRA_TEXT, movie.title + " - " + movie.overview)
+
+            // Start an activity to show the available share options
+            startActivity(Intent.createChooser(shareIntent, "Share movie via"))
+        }
+
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -78,4 +100,14 @@ class MovieDetailActivity : AppCompatActivity() {
         }
     }
 
+    private fun showWebsiteOnTitleClick() {
+        val query = "${movie.title} trailer"
+        val uri = Uri.parse("https://www.google.com/search?q=${query.replace(" ", "+")}")
+        val webIntent = Intent(Intent.ACTION_VIEW, uri)
+        try {
+            startActivity(webIntent)
+        } catch (e: ActivityNotFoundException) {
+            // Define the action to take if there is no activity that can handle the intent
+        }
+    }
 }

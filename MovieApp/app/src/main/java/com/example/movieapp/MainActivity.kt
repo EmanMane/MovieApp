@@ -66,6 +66,8 @@ class MainActivity : AppCompatActivity() {
         recentMovies.adapter = recentMoviesAdapter
         recentMoviesAdapter.updateMovies(recentMoviesList)
 
+        searchText = findViewById(R.id.searchText)
+
         if(intent?.action == Intent.ACTION_SEND && intent?.type == "text/plain")
             handleSendText(intent)
 
