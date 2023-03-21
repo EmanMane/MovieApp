@@ -103,7 +103,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="136dp"
                 android:layout_marginTop="24dp"
-                android:text="Visit on IMDb"
+                android:text="@string/visit"
                 android:textColor="@color/highlightColor"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="@id/movie_poster_card"
