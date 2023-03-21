@@ -15,8 +15,8 @@
         android:clickable="true"
         android:src="@android:drawable/ic_menu_share"
         android:tint="#FFFFFF"
-        android:translationX="900px"
-        android:translationY="1725px" />
+        android:translationX="320dp"
+        android:translationY="650dp" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"

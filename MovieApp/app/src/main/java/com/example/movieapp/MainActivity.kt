@@ -1,8 +1,10 @@
 package com.example.movieapp
 
 import android.app.UiModeManager
+import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -11,7 +13,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import java.util.*
 import android.content.res.Configuration
+import android.net.ConnectivityManager
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 
 class MainActivity : AppCompatActivity() {
@@ -25,6 +29,18 @@ class MainActivity : AppCompatActivity() {
     private var recentMoviesList =  getRecentMovies()
 
     private var isBosnian: Boolean = false
+
+    class NetworkChangeReceiver : BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent?) {
+            val cm = context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            val activeNetwork = cm.activeNetworkInfo
+            val isConnected = activeNetwork?.isConnectedOrConnecting == true
+            if (!isConnected) {
+                val message = context.getString(R.string.offline)
+                Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,6 +74,9 @@ class MainActivity : AppCompatActivity() {
         switchThemeButton.setOnClickListener {
             switchTheme()
         }
+
+        val filter = IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)
+        registerReceiver(NetworkChangeReceiver(), filter)
     }
 
     private fun showMovieDetails(movie: Movie) {
@@ -95,9 +114,5 @@ class MainActivity : AppCompatActivity() {
         }
         recreate()
     }
-
-
-
-
 
 }
