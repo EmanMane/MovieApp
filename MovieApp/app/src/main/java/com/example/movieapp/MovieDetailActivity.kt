@@ -36,12 +36,24 @@ class MovieDetailActivity : AppCompatActivity() {
         website.setOnClickListener{
             showWebsite()
         }
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
+    override fun onBackPressed() {
+        // Navigate back to the previous activity
+        super.onBackPressed()
+    }
+
     private fun populateDetails() {
         title.text=movie.title
         releaseDate.text=movie.releaseDate
         genre.text=movie.genre
-        website.text=movie.homepage
+        //website.text=movie.homepage
         overview.text=movie.overview
         val context: Context = poster.context
         var id: Int = context.resources
@@ -66,8 +78,4 @@ class MovieDetailActivity : AppCompatActivity() {
         }
     }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-        finish()
-    }
 }

@@ -8,7 +8,7 @@ fun getFavoriteMovies(): List<Movie> {
             "scifi"),
         Movie(2,"Star Wars: The Last Jedi",
             "The Star Wars saga continues as new heroes and galactic legends go on an epic adventure, unlocking mysteries of the Force and shocking revelations of the past.",
-            "16.02.2021.","https://www.imdb.com/title/tt0414387/",
+            "16.02.2021.","https://www.imdb.com/title/tt2527336/?ref_=fn_al_tt_1",
             "scifi"),
         Movie(3,"The Whale",
             "A reclusive, morbidly obese English teacher attempts to reconnect with his estranged teenage daughter.",
