@@ -1,11 +1,14 @@
 package com.example.movieapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.EditText
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var searchText: EditText
     private lateinit var favoriteMovies: RecyclerView
     private lateinit var favoriteMoviesAdapter: MovieListAdapter
     private var favoriteMoviesList =  getFavoriteMovies()
@@ -25,7 +28,7 @@ class MainActivity : AppCompatActivity() {
             LinearLayoutManager.HORIZONTAL,
             false
         )
-        favoriteMoviesAdapter = MovieListAdapter(listOf())
+        favoriteMoviesAdapter = MovieListAdapter(arrayListOf()) { movie -> showMovieDetails(movie) }
         favoriteMovies.adapter = favoriteMoviesAdapter
         favoriteMoviesAdapter.updateMovies(favoriteMoviesList)
 
@@ -35,8 +38,24 @@ class MainActivity : AppCompatActivity() {
             LinearLayoutManager.HORIZONTAL,
             false
         )
-        recentMoviesAdapter = MovieListAdapter(listOf())
+        recentMoviesAdapter = MovieListAdapter(arrayListOf()) { movie -> showMovieDetails(movie) }
         recentMovies.adapter = recentMoviesAdapter
         recentMoviesAdapter.updateMovies(recentMoviesList)
+
+        if(intent?.action == Intent.ACTION_SEND && intent?.type == "text/plain")
+            handleSendText(intent)
+    }
+
+    private fun showMovieDetails(movie: Movie) {
+        val intent = Intent(this, MovieDetailActivity::class.java).apply {
+            putExtra("movie_title", movie.title)
+        }
+        startActivity(intent)
+    }
+
+    private fun handleSendText(intent: Intent) {
+        intent.getStringExtra(Intent.EXTRA_TEXT)?.let {
+            searchText.setText(it)
+        }
     }
 }
