@@ -65,4 +65,9 @@ class MovieDetailActivity : AppCompatActivity() {
             // Definisati naredbe ako ne postoji aplikacija za navedenu akciju
         }
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
+    }
 }

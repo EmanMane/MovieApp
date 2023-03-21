@@ -3,4 +3,6 @@
     <string name="search">Search</string>
     <string name="favorite">Favorite Movies</string>
     <string name="recent">Recent Movies</string>
+    <string name="switch_l">Switch Language</string>
+    <string name="switch_t">Switch Theme</string>
 </resources>

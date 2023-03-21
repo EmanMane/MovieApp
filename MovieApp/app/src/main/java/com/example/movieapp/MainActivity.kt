@@ -1,11 +1,18 @@
 package com.example.movieapp
 
+import android.app.UiModeManager
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.EditText
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import java.util.*
+import android.content.res.Configuration
+import android.widget.Button
+import androidx.appcompat.app.AppCompatDelegate
 
 class MainActivity : AppCompatActivity() {
     private lateinit var searchText: EditText
@@ -17,6 +24,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var recentMoviesAdapter: MovieListAdapter
     private var recentMoviesList =  getRecentMovies()
 
+    private var isBosnian: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +52,12 @@ class MainActivity : AppCompatActivity() {
 
         if(intent?.action == Intent.ACTION_SEND && intent?.type == "text/plain")
             handleSendText(intent)
+
+        // Find the ThemeSwitch button in the layout and set a click listener
+        val switchThemeButton: Button = findViewById(R.id.themeSwitchButton)
+        switchThemeButton.setOnClickListener {
+            switchTheme()
+        }
     }
 
     private fun showMovieDetails(movie: Movie) {
@@ -58,4 +72,32 @@ class MainActivity : AppCompatActivity() {
             searchText.setText(it)
         }
     }
+
+    fun switchLanguage(view: View) {
+        val defaultLocale = Locale.getDefault()
+        val androidStudioLocale = Locale.US
+        val newLocale = when (Locale.getDefault()) {
+            Locale("bs", "BA") -> androidStudioLocale
+            else -> Locale("bs", "BA")
+        }
+        Locale.setDefault(newLocale)
+        val config = Configuration()
+        config.locale = newLocale
+        resources.updateConfiguration(config, resources.displayMetrics)
+        recreate()
+    }
+
+    private fun switchTheme() {
+        val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+        when (currentNightMode) {
+            Configuration.UI_MODE_NIGHT_NO -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            Configuration.UI_MODE_NIGHT_YES -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+        recreate()
+    }
+
+
+
+
+
 }
