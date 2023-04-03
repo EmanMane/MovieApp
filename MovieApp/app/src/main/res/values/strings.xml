@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">Cineaste</string>
     <string name="search">Search</string>
-    <string name="favorite">Favorite Movies</string>
-    <string name="recent">Recent Movies</string>
+    <string name="favoritesText">Favorite Movies</string>
+    <string name="favorite">Favorite</string>
+    <string name="recent">Recent</string>
+    <string name="recentTexts">Recent Movies</string>
     <string name="switch_l">Switch Language</string>
     <string name="switch_t">Switch Theme</string>
     <string name="offline">You are OFFLINE</string>

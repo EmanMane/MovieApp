@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">Cineaste</string>
     <string name="search">Pretraži</string>
-    <string name="favorite">Omiljeni Filmovi</string>
-    <string name="recent">Najnoviji Filmovi</string>
+    <string name="favoritesText">Omiljeni Filmovi</string>
+    <string name="favorite">Omiljeni</string>
+    <string name="recent">Najnoviji</string>
+    <string name="recentTexts">Najnoviji Filmovi</string>
     <string name="switch_l">Promijeni Jezik</string>
     <string name="switch_t">Promijeni Teme</string>
     <string name="offline">Nema interneta</string>
