@@ -1,4 +1,4 @@
-package com.example.movieapp
+package com.example.movieapp.main_fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import androidx.fragment.app.Fragment
+import com.example.movieapp.R
 
 class SearchFragment : Fragment() {
     private lateinit var searchText: EditText

@@ -1,5 +1,7 @@
 package com.example.movieapp
 
+import com.example.movieapp.data.Movie
+
 fun getFavoriteMovies(): List<Movie> {
     return listOf(
         Movie(1,"Avengers: Endgame",
@@ -93,4 +95,20 @@ fun getRecentMovies(): List<Movie> {
             "16.02.2021.","https://www.imdb.com/title/tt3915174/?ref_=nv_sr_srsg_2",
             "adventure", listOf("Antonio Banderas", "Salma Hayek", "Zach Galifianakis"), listOf("The Adventures of Tintin", "How to Train Your Dragon", "Kung Fu Panda"))
     )
+}
+
+fun getActorsByMovieTitle(title: String): List<String> {
+    val recent = getRecentMovies()
+    val favorite = getRecentMovies()
+    val movies = recent + favorite
+    val movie = movies.find { it.title == title }
+    return movie?.actors ?: emptyList()
+}
+
+fun getSimilarByMovieTitle(title: String): List<String> {
+    val recent = getRecentMovies()
+    val favorite = getRecentMovies()
+    val movies = recent + favorite
+    val movie = movies.find { it.title == title }
+    return movie?.similar ?: emptyList()
 }

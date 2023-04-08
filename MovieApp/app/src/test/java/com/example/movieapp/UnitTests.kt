@@ -1,6 +1,7 @@
 package com.example.movieapp
 
 
+import com.example.movieapp.data.Movie
 import org.hamcrest.CoreMatchers.*
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.hasProperty

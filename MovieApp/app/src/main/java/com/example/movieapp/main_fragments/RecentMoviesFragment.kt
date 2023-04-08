@@ -1,4 +1,4 @@
-package com.example.movieapp
+package com.example.movieapp.main_fragments
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +8,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.movieapp.MovieDetailActivity
+import com.example.movieapp.adapters.MovieListAdapter
+import com.example.movieapp.R
+import com.example.movieapp.data.Movie
+import com.example.movieapp.getRecentMovies
 
 class RecentMoviesFragment : Fragment() {
     private lateinit var recentMovies: RecyclerView

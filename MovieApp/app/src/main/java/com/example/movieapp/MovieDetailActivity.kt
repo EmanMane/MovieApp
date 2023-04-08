@@ -6,14 +6,9 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.example.movieapp.data.Movie
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MovieDetailActivity : AppCompatActivity() {
@@ -93,12 +88,12 @@ class MovieDetailActivity : AppCompatActivity() {
             .getIdentifier("picture1", "drawable", context.packageName)
         poster.setImageResource(id)
     }
-    private fun getMovieByTitle(name:String):Movie{
+    private fun getMovieByTitle(name:String): Movie {
         val movies: ArrayList<Movie> = arrayListOf()
         movies.addAll(getRecentMovies())
         movies.addAll(getFavoriteMovies())
         val movie= movies.find { movie -> name == movie.title }
-        return movie?:Movie(0,"Test","Test","Test","Test","Test", listOf(),listOf())
+        return movie?: Movie(0,"Test","Test","Test","Test","Test", listOf(),listOf())
     }
     private fun showWebsite(){
         val webIntent: Intent = Intent(Intent.ACTION_VIEW, Uri.parse(movie.homepage))

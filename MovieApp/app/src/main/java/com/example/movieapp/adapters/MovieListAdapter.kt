@@ -1,4 +1,4 @@
-package com.example.movieapp
+package com.example.movieapp.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,10 +7,12 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.movieapp.R
+import com.example.movieapp.data.Movie
 
 class MovieListAdapter(
     private var movies: List<Movie>,
-    private val onItemClicked: (movie:Movie) -> Unit
+    private val onItemClicked: (movie: Movie) -> Unit
 ) : RecyclerView.Adapter<MovieListAdapter.MovieViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         val view = LayoutInflater
