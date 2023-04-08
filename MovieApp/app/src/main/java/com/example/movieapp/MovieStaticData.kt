@@ -1,7 +1,5 @@
 package com.example.movieapp
 
-import com.example.movieapp.data.Movie
-
 fun getFavoriteMovies(): List<Movie> {
     return listOf(
         Movie(1,"Avengers: Endgame",

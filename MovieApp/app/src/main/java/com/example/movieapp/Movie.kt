@@ -1,4 +1,4 @@
-package com.example.movieapp.data
+package com.example.movieapp
 
 data class Movie(
     val id: Long,

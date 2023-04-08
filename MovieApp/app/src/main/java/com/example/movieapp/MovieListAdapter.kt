@@ -1,4 +1,4 @@
-package com.example.movieapp.adapters
+package com.example.movieapp
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,8 +7,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.movieapp.R
-import com.example.movieapp.data.Movie
 
 class MovieListAdapter(
     private var movies: List<Movie>,
