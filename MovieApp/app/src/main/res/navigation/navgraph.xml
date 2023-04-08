@@ -2,14 +2,14 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/navgraph"
-    app:startDestination="@id/favoriteMoviesFragment">
+    app:startDestination="@id/actorsFragment">
 
     <fragment
-        android:id="@+id/favoriteMoviesFragment"
+        android:id="@+id/actorsFragment"
         android:name="com.example.movieapp.FavoriteMoviesFragment"
         android:label="FavoriteMoviesFragment" />
     <fragment
-        android:id="@+id/recentMoviesFragment"
+        android:id="@+id/similarFragment"
         android:name="com.example.movieapp.RecentMoviesFragment"
         android:label="RecentMoviesFragment" />
     <fragment

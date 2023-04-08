@@ -11,6 +11,9 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MovieDetailActivity : AppCompatActivity() {
@@ -59,6 +62,12 @@ class MovieDetailActivity : AppCompatActivity() {
             startActivity(Intent.createChooser(shareIntent, "Share movie via"))
         }
 
+        /*val navHostFragment = supportFragmentManager.findFragmentById(R.id.detailsFragmentContainer) as NavHostFragment
+        val navController = navHostFragment.navController
+        val navView: BottomNavigationView = findViewById(R.id.detailsMenu)
+        navView.setupWithNavController(navController)*/
+
+
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -89,7 +98,7 @@ class MovieDetailActivity : AppCompatActivity() {
         movies.addAll(getRecentMovies())
         movies.addAll(getFavoriteMovies())
         val movie= movies.find { movie -> name == movie.title }
-        return movie?:Movie(0,"Test","Test","Test","Test","Test")
+        return movie?:Movie(0,"Test","Test","Test","Test","Test", listOf(),listOf())
     }
     private fun showWebsite(){
         val webIntent: Intent = Intent(Intent.ACTION_VIEW, Uri.parse(movie.homepage))
@@ -110,4 +119,15 @@ class MovieDetailActivity : AppCompatActivity() {
             // Define the action to take if there is no activity that can handle the intent
         }
     }
+
+    /*private fun showActors(actors: List<String>) {
+        val fragment = ActorsFragment()
+        val bundle = Bundle()
+        bundle.putStringArrayList("actors", ArrayList(actors))
+        fragment.arguments = bundle
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.detailsFragmentContainer, fragment)
+            .addToBackStack(null)
+            .commit()
+    }*/
 }

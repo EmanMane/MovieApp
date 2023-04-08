@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@id/favoriteMoviesFragment"
+        android:id="@id/actorsFragment"
         android:icon="@android:drawable/btn_star_big_off"
         android:title="Favorites" />
 
     <item
-        android:id="@id/recentMoviesFragment"
+        android:id="@id/similarFragment"
         android:icon="@android:drawable/ic_popup_reminder"
         android:title="Recent" />
 
