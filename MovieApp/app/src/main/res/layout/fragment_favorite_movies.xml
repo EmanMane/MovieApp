@@ -3,14 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginBottom="-20dp">
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="32dp"
-        android:paddingHorizontal="14dp"
+        android:paddingHorizontal="17dp"
         android:text="@string/favorite"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
@@ -24,7 +23,7 @@
         android:id="@+id/textView2"
         android:layout_width="0dp"
         android:layout_height="20dp"
-        android:paddingHorizontal="14dp"
+        android:paddingHorizontal="17dp"
         android:text="@string/favoritesText"
         app:layout_constraintBottom_toTopOf="@+id/favoriteMovies"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,9 +36,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:clipToPadding="true"
-        android:paddingHorizontal="30dp"
+        android:paddingHorizontal="15dp"
         android:paddingTop="10dp"
-        android:paddingBottom="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
