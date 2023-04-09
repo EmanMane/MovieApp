@@ -4,10 +4,13 @@ import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MovieDetailActivity : AppCompatActivity() {
@@ -21,12 +24,21 @@ class MovieDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_detail)
+
         title = findViewById(R.id.movie_title)
         overview = findViewById(R.id.movie_overview)
         releaseDate = findViewById(R.id.movie_release_date)
         genre = findViewById(R.id.movie_genre)
         poster = findViewById(R.id.movie_poster)
         website = findViewById(R.id.movie_website)
+
+        // Setting up for fragments
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.movieDetailsNavHost) as NavHostFragment
+        val navController = navHostFragment.navController
+        val navView: BottomNavigationView = findViewById(R.id.detailsMenu)
+        navView.setupWithNavController(navController)
+
+
         val extras = intent.extras
         if (extras != null) {
             movie = getMovieByTitle(extras.getString("movie_title",""))
@@ -34,9 +46,11 @@ class MovieDetailActivity : AppCompatActivity() {
         } else {
             finish()
         }
+
         website.setOnClickListener{
             showWebsite()
         }
+
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         title.setOnClickListener {
@@ -55,16 +69,10 @@ class MovieDetailActivity : AppCompatActivity() {
             // Start an activity to show the available share options
             startActivity(Intent.createChooser(shareIntent, "Share movie via"))
         }
-
-        /*val navHostFragment = supportFragmentManager.findFragmentById(R.id.detailsFragmentContainer) as NavHostFragment
-        val navController = navHostFragment.navController
-        val navView: BottomNavigationView = findViewById(R.id.detailsMenu)
-        navView.setupWithNavController(navController)*/
-
-
     }
 
-    override fun onSupportNavigateUp(): Boolean {
+
+    /*override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
     }
@@ -72,7 +80,7 @@ class MovieDetailActivity : AppCompatActivity() {
     override fun onBackPressed() {
         // Navigate back to the previous activity
         super.onBackPressed()
-    }
+    }*/
 
     private fun populateDetails() {
         title.text=movie.title
@@ -114,14 +122,7 @@ class MovieDetailActivity : AppCompatActivity() {
         }
     }
 
-    /*private fun showActors(actors: List<String>) {
-        val fragment = ActorsFragment()
-        val bundle = Bundle()
-        bundle.putStringArrayList("actors", ArrayList(actors))
-        fragment.arguments = bundle
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.detailsFragmentContainer, fragment)
-            .addToBackStack(null)
-            .commit()
-    }*/
+    fun getMovieTitle(): String? {
+        return movie.title
+    }
 }

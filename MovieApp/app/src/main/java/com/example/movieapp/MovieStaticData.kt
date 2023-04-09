@@ -1,15 +1,95 @@
 package com.example.movieapp
 
+import android.util.Log
+
 fun getFavoriteMovies(): List<Movie> {
     return listOf(
         Movie(1,"Avengers: Endgame",
             "After the devastating events of Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe.",
             "16.02.2021.","https://www.imdb.com/title/tt4154796/",
-            "scifi",listOf("Robert Downey Jr.", "Chris Evans", "Mark Ruffalo"),listOf("Avengers: Infinity War", "Captain America: The Winter Soldier", "Thor: Ragnarok")),
+            "scifi",listOf(
+                "Robert Downey Jr.",
+                "Chris Evans",
+                "Mark Ruffalo",
+                "Chris Hemsworth",
+                "Scarlett Johansson",
+                "Jeremy Renner",
+                "Don Cheadle",
+                "Paul Rudd",
+                "Brie Larson",
+                "Karen Gillan",
+                "Danai Gurira",
+                "Benedict Wong",
+                "Jon Favreau",
+                "Bradley Cooper",
+                "Gwyneth Paltrow",
+                "Josh Brolin",
+                "Tom Hiddleston",
+                "Idris Elba",
+                "Tessa Thompson",
+                "Rene Russo",
+                "Elizabeth Olsen",
+                "Anthony Mackie",
+                "Sebastian Stan",
+                "Tom Holland",
+                "Pom Klementieff",
+                "Dave Bautista",
+                "Letitia Wright",
+                "Chadwick Boseman",
+                "Michael Douglas",
+                "Michelle Pfeiffer",
+                "Vin Diesel",
+                "Linda Cardellini",
+                "Frank Grillo",
+                "Hiroyuki Sanada",
+                "Stan Lee"
+            ),listOf(
+                "Avengers: Infinity War",
+                "Avengers: Age of Ultron",
+                "Captain America: The Winter Soldier",
+                "Captain America: Civil War",
+                "Thor: Ragnarok",
+                "Guardians of the Galaxy",
+                "Guardians of the Galaxy Vol. 2",
+                "Spider-Man: Homecoming",
+                "Doctor Strange",
+                "Black Panther",
+                "Captain Marvel"
+            )),
         Movie(2,"Star Wars: The Last Jedi",
             "The Star Wars saga continues as new heroes and galactic legends go on an epic adventure, unlocking mysteries of the Force and shocking revelations of the past.",
             "16.02.2021.","https://www.imdb.com/title/tt2527336/?ref_=fn_al_tt_1",
-            "scifi",listOf("Daisy Ridley", "Adam Driver", "John Boyega"), listOf("Star Wars: The Force Awakens", "Rogue One: A Star Wars Story", "Star Wars: Episode IX - The Rise of Skywalker")),
+            "scifi",listOf(
+                "Daisy Ridley",
+                "Adam Driver",
+                "John Boyega",
+                "Oscar Isaac",
+                "Mark Hamill",
+                "Carrie Fisher",
+                "Domhnall Gleeson",
+                "Laura Dern",
+                "Andy Serkis",
+                "Benicio Del Toro",
+                "Gwendoline Christie",
+                "Anthony Daniels",
+                "Kelly Marie Tran",
+                "Frank Oz",
+                "Joonas Suotamo"
+            ), listOf(
+                "Star Wars: The Force Awakens",
+                "Rogue One: A Star Wars Story",
+                "Star Wars: Episode IX - The Rise of Skywalker",
+                "Star Wars: Episode I - The Phantom Menace",
+                "Star Wars: Episode II - Attack of the Clones",
+                "Star Wars: Episode III - Revenge of the Sith",
+                "Star Wars: Episode IV - A New Hope",
+                "Star Wars: Episode V - The Empire Strikes Back",
+                "Star Wars: Episode VI - Return of the Jedi",
+                "Star Wars: Episode VII - The Force Awakens",
+                "Star Wars: Episode VIII - The Last Jedi",
+                "Star Wars: The Clone Wars",
+                "Solo: A Star Wars Story"
+            )),
         Movie(3,"The Whale",
             "A reclusive, morbidly obese English teacher attempts to reconnect with his estranged teenage daughter.",
             "16.02.2021.","https://www.imdb.com/title/tt13833688/?ref_=adv_li_tt",
@@ -49,7 +129,7 @@ fun getFavoriteMovies(): List<Movie> {
         Movie(12, "Goodfellas",
             "The story of Henry Hill and his life in the mob, covering his relationship with his wife Karen Hill and his mob partners Jimmy Conway and Tommy DeVito in the Italian-American crime syndicate.",
             "16.02.2021", "https://www.imdb.com/title/tt0099685/",
-            "crime", listOf("Robert De Niro", "Ray Liotta", "Joe Pesci"), listOf("The Godfather", "The Departed", "Scarface")),
+            "drama", listOf("Robert De Niro", "Ray Liotta", "Joe Pesci"), listOf("The Godfather", "The Departed", "Scarface")),
         Movie(13, "The Lion King",
             "A lion prince flees his kingdom only to learn the true meaning of responsibility and bravery.",
             "16.02.2021", "https://www.imdb.com/title/tt0110357/",
@@ -96,8 +176,9 @@ fun getRecentMovies(): List<Movie> {
 }
 
 fun getActorsByMovieTitle(title: String): List<String> {
+    //Log.d("EMANEEEE", "getActorsByMovieTitle called with movieTitle: $title")
     val recent = getRecentMovies()
-    val favorite = getRecentMovies()
+    val favorite = getFavoriteMovies()
     val movies = recent + favorite
     val movie = movies.find { it.title == title }
     return movie?.actors ?: emptyList()
@@ -105,7 +186,7 @@ fun getActorsByMovieTitle(title: String): List<String> {
 
 fun getSimilarByMovieTitle(title: String): List<String> {
     val recent = getRecentMovies()
-    val favorite = getRecentMovies()
+    val favorite = getFavoriteMovies()
     val movies = recent + favorite
     val movie = movies.find { it.title == title }
     return movie?.similar ?: emptyList()

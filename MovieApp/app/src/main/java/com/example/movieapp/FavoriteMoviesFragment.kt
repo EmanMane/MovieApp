@@ -18,7 +18,7 @@ class FavoriteMoviesFragment : Fragment() {
         favoriteMovies = view.findViewById(R.id.favoriteMovies)
         favoriteMovies.layoutManager = GridLayoutManager(activity, 2)
         favoriteMoviesAdapter = MovieListAdapter(arrayListOf()) { movie -> showMovieDetails(movie) }
-        favoriteMovies.adapter=favoriteMoviesAdapter
+        favoriteMovies.adapter = favoriteMoviesAdapter
         favoriteMoviesAdapter.updateMovies(favoriteMoviesList)
         return view;
     }
