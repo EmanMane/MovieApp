@@ -13,7 +13,11 @@ class FavoriteMoviesFragment : Fragment() {
     private lateinit var favoriteMovies: RecyclerView
     private lateinit var favoriteMoviesAdapter: MovieListAdapter
     private var favoriteMoviesList =  getFavoriteMovies()
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         var view =  inflater.inflate(R.layout.fragment_favorite_movies, container, false)
         favoriteMovies = view.findViewById(R.id.favoriteMovies)
         favoriteMovies.layoutManager = GridLayoutManager(activity, 2)
