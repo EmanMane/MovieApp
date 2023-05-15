@@ -39,6 +39,10 @@ class MainActivity : AppCompatActivity() {
                 navController.navigate(R.id.searchFragment,bundle)
             }
         }
+        Intent(this, LatestMovieService::class.java).also {
+            startForegroundService(it)
+            return
+        }
     }
 }
 
