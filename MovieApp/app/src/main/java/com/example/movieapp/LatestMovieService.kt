@@ -1,4 +1,4 @@
-package com.example.movieapp
+package com.example.cineaste
 
 import android.Manifest
 import android.app.*
@@ -6,13 +6,13 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
-import android.os.Build
 import android.os.IBinder
 import android.os.PowerManager
 import android.util.Log
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import com.example.cineaste.data.Movie
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
@@ -27,9 +27,8 @@ import java.net.URL
 class LatestMovieService : Service() {
     private var wakeLock: PowerManager.WakeLock? = null
     private var isServiceStarted = false
-    //private val tmdb_api_key : String = BuildConfig.TMDB_API_KEY
-    private val tmdb_api_key : String = "2ab3e9674ead894beed2773e7be60d3b"
-    private var movie = MovieP(1,"test","test","test","test"," ","test","test")
+    private val tmdb_api_key : String = BuildConfig.TMDB_API_KEY
+    private var movie = Movie(1,"test","test","test","test","test","test")
 
     override fun onBind(intent: Intent): IBinder? {
         return null
